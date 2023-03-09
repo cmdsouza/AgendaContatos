@@ -1,10 +1,3 @@
-/*
-
-https://github.com/dkayke-aulas/agenda-contatos-backend
-
-*/
-
-/* Pega as informações formulário de login */
 let loginForm = document.getElementById("loginForm");
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();

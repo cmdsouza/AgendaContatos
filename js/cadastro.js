@@ -1,31 +1,27 @@
-/*
-
-https://github.com/dkayke-aulas/agenda-contatos-backend
-
-*/
-
-/* Pega as informações formulário de login */
-let loginForm = document.getElementById("loginForm");
-loginForm.addEventListener("submit", (e) => {
+let cadastroForm = document.getElementById("cadastroForm");
+cadastroForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    let nome = document.getElementById("nome").value;
     let email = document.getElementById("email").value;
     let senha = document.getElementById("senha").value;
 
-    loginUsuario(email, senha);
+    criarUsuario(nome, email, senha);
 });
 
-function loginUsuario(email, senha){
 
+function criarUsuario(nome, email, senha) {
     json = JSON.stringify({
         "email": email,
-        "senha": senha
+        "senha": senha,
+        "nome": nome,
+        "foto": "data:image/png;base64,abcdefghijklmnopqrstuvwxyz"
     });
 
-    url = "http://localhost:5000/v1/auth";
-    redirecionamento = "agenda.html";
-    msgErro = 'Erro ao autenticar';
-    msgSucesso = "Bem-vindo!";
+    url = "http://localhost:5000/v1/user";
+    redirecionamento = "login.html";
+    msgErro = 'Erro ao cadastrar o usuário';
+    msgSucesso = "Usuário cadastrado com sucesso! Faça o seu login :)";
 
     requisicaoAPI(json, url, redirecionamento, msgErro, msgSucesso);
 }
